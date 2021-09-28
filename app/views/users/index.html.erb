@@ -1,7 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Users</h1>
+<center>
+<h1>Welcome to ZLP Scheduler!</h1>
+<h1>Schedule your interview down below</h1>
 
+<!--
 <table>
   <thead>
     <tr>
@@ -14,6 +17,10 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.name %></td>
+        <td><%= user.phoneNumber %></td>
+        <td><%= user.email %></td>
+        <td><%= user.interviewDate %></td>
+        <td><%= user.interviewTime %></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -21,7 +28,8 @@
     <% end %>
   </tbody>
 </table>
-
+-->
 <br>
 
-<%= link_to 'New User', new_user_path %>
+<%= link_to 'New Interview', new_user_path %>
+</center>

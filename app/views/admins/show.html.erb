@@ -1,8 +1,16 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @admin.name %>
+  <strong>Schedule Name:</strong>
+  <%= @admin.scheduleName %>
+  <strong>Date Range:</strong>
+  <%= @admin.dateRange%>
+  <strong>Time Range:</strong>
+  <%= @admin.timeRange%>
+  <strong>Interview Length:</strong>
+  <%= @admin.interviewLength %>
+  <strong>Number of Breaks:</strong>
+  <%= @admin.numBreaks%>
 </p>
 
 <%= link_to 'Edit', edit_admin_path(@admin) %> |

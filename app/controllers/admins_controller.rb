@@ -4,6 +4,7 @@ class AdminsController < ApplicationController
   # GET /admins or /admins.json
   def index
     @admins = Admin.all
+    @users = User.all
   end
 
   # GET /admins/1 or /admins/1.json
@@ -64,6 +65,6 @@ class AdminsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def admin_params
-      params.require(:admin).permit(:name)
+      params.require(:admin).permit(:scheduleName, :dateRange, :timeRange, :interviewLength, :numBreaks)
     end
 end
