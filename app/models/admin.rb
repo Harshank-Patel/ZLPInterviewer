@@ -4,5 +4,4 @@ class Admin < ApplicationRecord
     validates :timeRange, presence: true
     validates :interviewLength, presence: true
     validates :numBreaks, presence: true
-
 end

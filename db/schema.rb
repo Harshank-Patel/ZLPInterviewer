@@ -29,8 +29,8 @@ ActiveRecord::Schema.define(version: 2021_09_28_150454) do
     t.string "name"
     t.string "phoneNumber"
     t.string "email"
-    t.string "interviewDate"
-    t.string "interviewTime"
+    t.date "interviewDate"
+    t.time "interviewTime"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -14,6 +14,11 @@ class AdminsController < ApplicationController
   # GET /admins/new
   def new
     @admin = Admin.new
+    #@admins.each do |admin|
+    #  startDate = dateRange.split(/-/)[0]
+    #  endDate = dateRange.split(/-/)[1]
+    #end
+
   end
 
   # GET /admins/1/edit
@@ -57,6 +62,12 @@ class AdminsController < ApplicationController
     end
   end
 
+  def get_dates
+    #startDate = dateRange.split(/-/)[0]
+    #endDate = dateRange.split(/-/)[1]
+    dateRange.split(/-/) # returns dateRange as an array with start date as first element, end date as last 
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_admin
@@ -67,4 +78,6 @@ class AdminsController < ApplicationController
     def admin_params
       params.require(:admin).permit(:scheduleName, :dateRange, :timeRange, :interviewLength, :numBreaks)
     end
+
+
 end

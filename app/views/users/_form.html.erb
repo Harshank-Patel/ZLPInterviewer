@@ -19,12 +19,13 @@
     <%= form.label :email %>
     <%= form.text_field :email %>
     <%= form.label :interviewDate %>
-    <%= form.text_field :interviewDate %>
+    <%= form.date_field(:interviewDate, min: "2021-10-11", max: "2021-10-14")%>
     <%= form.label :interviewTime %>
-    <%= form.text_field :interviewTime %>
+    <%= form.time_select :interviewTime, :start_hour => 8, :end_hour => 14, :minute_step => 30, :ampm => true, :time_separator => "" %>
   </div>
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+

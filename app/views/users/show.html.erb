@@ -10,8 +10,7 @@
   <strong>Interview Date:</strong>
   <%= @user.interviewDate %>
   <strong>Interview Time:</strong>
-  <%= @user.interviewTime %>
+  <%= @user.interviewTime.strftime("%I:%M%P") %>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Back', users_path%>

@@ -4,8 +4,8 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.string :name
       t.string :phoneNumber
       t.string :email
-      t.string :interviewDate
-      t.string :interviewTime
+      t.date :interviewDate
+      t.time :interviewTime
 
       t.timestamps
     end
