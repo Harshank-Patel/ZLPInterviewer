@@ -1,0 +1,68 @@
+<p id="notice"><%= notice %></p>
+
+<center>
+<h1>Interviews scheduled:</h1>
+</center>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Phone Number</th>
+      <th>Email</th>
+      <th>Interview Date</th>
+      <th>Interview Time</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.phoneNumber %></td>
+        <td><%= user.email %></td>
+        <td><%= user.interviewDate %></td>
+        <td><%= user.interviewTime.strftime("%I:%M%P") %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<center>
+<h1>Create new schedule:</h1>
+</center>
+
+<table>
+  <thead>
+    <tr>
+      <th>Schedule Name</th>
+      <th>Date Range</th>
+      <th>Time Range</th>
+      <th>Interview Length</th>
+      <th>Number of breaks</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admins.each do |admin| %>
+      <tr>
+        <td><%= admin.scheduleName %></td>
+        <td><%= admin.dateRange%></td>
+        <td><%= admin.timeRange%></td>
+        <td><%= admin.interviewLength%></td>
+        <td><%= admin.numBreaks%></td>
+        <td><%= link_to 'Show', admin %></td>
+        <td><%= link_to 'Edit', edit_admin_path(admin) %></td>
+        <td><%= link_to 'Destroy', admin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Schedule', new_admin_path %>
