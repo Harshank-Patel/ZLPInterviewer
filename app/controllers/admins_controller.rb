@@ -1,4 +1,7 @@
 class AdminsController < ApplicationController
+ 
+  http_basic_authenticate_with name: "zlpadmin", password: "zlppassword"
+
   before_action :set_admin, only: %i[ show edit update destroy ]
 
   # GET /admins or /admins.json
