@@ -1,7 +1,8 @@
 class SesionsController < ApplicationController
-  skip_before_action :require_login, only: [:create, :new]
+  before_action :authenticate_admin!, except: [:index, :show]
   skip_before_filter :verify_authenticity_token 
   skip_before_filter :authenticate_user!, :only => "reply", :raise => false
+  skip_before_action :require_login, only: [:create, :new]
   def create
     admin = Admin.find_by(email: params[:session][:email].downcase)
     if admin && admin.authenticate(params[:session][:password])
