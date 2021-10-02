@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+  <strong>Phone Number:</strong>
+  <%= @user.phoneNumber %>
+  <strong>Email:</strong>
+  <%= @user.email %>
+  <strong>Interview Date:</strong>
+  <%= @user.interviewDate %>
+  <strong>Interview Time:</strong>
+  <%= @user.interviewTime.strftime("%I:%M%P") %>
+</p>
+
+<%= link_to 'Back', users_path%>
