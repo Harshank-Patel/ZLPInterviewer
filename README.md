@@ -93,7 +93,9 @@ $ git push origin test
 7. From the Heroku Dashboard
 Click the New button in the top right of your app list and select Create new pipeline:
  
-![image](https://user-images.githubusercontent.com/71986659/135948391-b4c22d29-045d-4d38-beab-891bba5d5522.png)
+![image](https://user-images.githubusercontent.com/71986659/135948863-45ea06e3-0cd2-41db-9d39-d0462e25d2dd.png)
+
+![image](https://user-images.githubusercontent.com/71986659/135948970-bc33efa7-9f34-424a-b06b-95d8cd003632.png)
 
 Note: if there’s no app in a pipeline, the pipeline will disappear. Therefore we need to configure some apps as default.
 
