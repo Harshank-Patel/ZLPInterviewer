@@ -92,32 +92,26 @@ $ git push origin test
 
 7. From the Heroku Dashboard
 Click the New button in the top right of your app list and select Create new pipeline:
-
-
-
+ 
+![image](https://user-images.githubusercontent.com/71986659/135948391-b4c22d29-045d-4d38-beab-891bba5d5522.png)
 
 Note: if there’s no app in a pipeline, the pipeline will disappear. Therefore we need to configure some apps as default.
 
 8. Enable Review Apps. Do NOT select any options for this assignment. Click “Enable Review Apps” right away.
 
+![image](https://user-images.githubusercontent.com/71986659/135948431-c45d21f6-5739-49d0-b7d2-34fb4f2e2b26.png)
 
 9. Click “New app” in Review Apps. Choose the test branch. After you click “Create”, Heroku will start deploying immediately. Every time you make changes to the test branch, it triggers automatic deployment.
 
+![image](https://user-images.githubusercontent.com/71986659/135948488-4def3e28-2aee-4743-91a1-7df18f1f5303.png)
+
 10. We also need to create an app for staging.
 
-
-
-
-
-
-
-
-
-
+![image](https://user-images.githubusercontent.com/71986659/135948509-85fbad41-a97d-4333-ac92-b2f2e7dbf431.png)
 
 11. Click on the stage-test-app-1. Click Deploy. Choose the main branch for Automatic Deploys.
 
-
+![image](https://user-images.githubusercontent.com/71986659/135948553-cca214a5-e921-4785-9b2b-2683b6f17ae2.png)
 
 Great! You just created a pipeline ready for deployment!
 
@@ -126,13 +120,20 @@ You should remain in the test branch ($ git checkout test). You can be creative 
 Then save the changes and push to the remote test branch. Commands are the same as step 6.
 You’ll see that Heroku starts automatic deployment in the review app. After the deployment is done, open the app and see if it works.
 
+![image](https://user-images.githubusercontent.com/71986659/135948581-8ed1c1be-7964-41a9-9486-0bc54cc0e735.png)
 
 13. Next, go to the Github website. Create a pull request and merge the changes from test to main
 14. After the merge, you’ll see that Heroku is automatically deploying the staging app.
 
+![image](https://user-images.githubusercontent.com/71986659/135948604-08bf5a98-5241-4d20-9c8d-470c5d5acddb.png)
+
 15. When the staging app is ready, open the app and check if everything looks good. Then promote it to the production area.
 
+![image](https://user-images.githubusercontent.com/71986659/135948649-39d786e5-ed24-47e3-9dd3-38d5fd6a49a2.png)
+
 16. After your review app and production app are both deployed, take a screenshot of your pipeline interface. Include the screenshot and links to both apps in the submission report.
+
+![image](https://user-images.githubusercontent.com/71986659/135948673-4f3fd547-1c55-4665-949b-1647f89399e7.png)
 
 ## CI/CD ##
 
