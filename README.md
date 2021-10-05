@@ -63,6 +63,7 @@ The application can be seen using a browser and navigating to http://localhost:3
 2. (Start your docker and work in your terminal) Make sure you have dev, test and main branches. However, since we’re not really going to develop any new features, we won’t be using the dev branch in the assignment. We’ll be using test and main branches.
 First, use $ git status  to see if your git is tracking the current dir.
 If you haven’t created dev and test branches, please do it now. For example, commands to create a test branch with git:
+
 ![image](https://user-images.githubusercontent.com/71986659/135948039-22d70b59-03fa-4c4a-8662-b7c939c08520.png)
 
 Note:
