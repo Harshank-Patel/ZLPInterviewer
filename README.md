@@ -56,7 +56,7 @@ The application can be seen using a browser and navigating to http://localhost:3
 
 ## Environmental Variables/Files ##
 
-** Add instructions/description if your application requires it.
+Don't have any since didn't use Google OAuth
 
 ## Deployment ##
 1. For this assignment you should work with your github repository environment_test that you created previously. It should contain the test_app that we built in lab 1 and 2.
@@ -72,14 +72,17 @@ $ git checkout <branch> will only switch to the branch
 You don’t need to create a new branch in Github in advance, because $ git push origin <branch> will do it for you if Github doesn’t have a corresponding branch.
 
 After you create all three branches, your Github should look like this: 
+ 
 ![image](https://user-images.githubusercontent.com/71986659/135948077-9673b8ee-26ce-401b-88e7-41b7effbabed.png)
 
 3. Switch to the test branch. Command - $ git checkout test
 4. We want to run the migration on each deploy automatically.
 Create a file named Procfile in the root dir with this line of code
+ 
 ![image](https://user-images.githubusercontent.com/71986659/135948122-5a288ca7-b2d9-4bf3-994f-764ef745efa3.png)
 
 5. Create a root route in config/routes.rb
+ 
 ![image](https://user-images.githubusercontent.com/71986659/135948148-f2db8c45-f85c-4aab-978f-4541420953bf.png)
 
 6. Save the changes and push it to origin/test
