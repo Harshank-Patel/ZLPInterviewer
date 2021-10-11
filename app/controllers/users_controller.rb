@@ -69,4 +69,8 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :phoneNumber, :email, :interviewDate, :interviewTime)
     end
+
+    def access_admin
+      @admins = Admin.all
+    end
 end

@@ -1,6 +1,6 @@
 class AdminsController < ApplicationController
  
-  # http_basic_authenticate_with name: "zlpadmin", password: "zlppassword"
+  http_basic_authenticate_with name: "zlpadmin", password: "zlppassword"
 
   before_action :set_admin, only: %i[ show edit update destroy ]
 
@@ -66,8 +66,6 @@ class AdminsController < ApplicationController
   end
 
   def get_dates
-    #startDate = dateRange.split(/-/)[0]
-    #endDate = dateRange.split(/-/)[1]
     dateRange.split(/-/) # returns dateRange as an array with start date as first element, end date as last 
   end
 
