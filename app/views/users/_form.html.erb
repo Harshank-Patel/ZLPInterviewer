@@ -21,8 +21,8 @@
     <%= form.label :interviewDate %>
     <%= form.date_field(:interviewDate, :required => true, min: User.get_dates.split(/:/)[0].to_s, max: User.get_dates.split(/:/)[1].to_s )%>
     <%= form.label :interviewTime %>
-    <%= form.time_select :interviewTime, :start_hour => 8,
-     :end_hour => 14, :minute_step => 30, :ampm => true, :time_separator => "" %>
+    <%= form.time_select :interviewTime, :start_hour => User.get_times[0],
+     :end_hour => User.get_times[1], :minute_step => 30, :ampm => true, :time_separator => "" %>
   </div>
 
   <div class="actions">
