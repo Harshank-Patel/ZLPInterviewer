@@ -20,11 +20,11 @@
     <%= form.text_field :email, :required => true %>
     <%= form.label :interviewDate %>
     <% User.list_days.each do |item| %>
-      <%= form.radio_button :interviewDate, name = item %> <%= item %></br>
+      <%= form.radio_button :interviewDate, name = item %> <%= item %><br>
     <% end %>
     <%= form.label :interviewTime %>
     <% User.list_times.each do |i| %>
-      <%= form.radio_button :interviewTime, name = i %> <%= i %></br>
+      <%= form.radio_button :interviewTime, name = i %> <%= i %><br>
     <% end %>
   </div>
 
