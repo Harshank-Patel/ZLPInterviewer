@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 2021_09_28_150454) do
     t.string "timeRange"
     t.string "interviewLength"
     t.string "numBreaks"
-    t.string "numRooms"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
