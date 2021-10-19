@@ -12,16 +12,18 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :scheduleName %>
-    <%= form.text_field :scheduleName%>
-    <%= form.label :dateRange%>
+    <%= form.label "Schedule Name"%>
+    <%= form.text_field :scheduleName %>
+    <%= form.label "Date Range (YYYY-MM-DD:YYYY-MM-DD)"%>
     <%= form.text_field :dateRange%>
-    <%= form.label :timeRange%>
+    <%= form.label "Time Range (XX:XXam - XX:XXpm)"%>
     <%= form.text_field :timeRange%>
-    <%= form.label :interviewLength%>
+    <%= form.label "Interview Length (mins)"%>
     <%= form.text_field :interviewLength%>
-    <%= form.label :numBreaks%>
+    <%= form.label "Break every __ interviews"%>
     <%= form.text_field :numBreaks%>
+    <%= form.label "Number of Rooms"%>
+    <%= form.text_field :numRooms%>
   </div>
 
 

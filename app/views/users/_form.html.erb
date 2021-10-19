@@ -19,9 +19,13 @@
     <%= form.label :email %>
     <%= form.text_field :email, :required => true %>
     <%= form.label :interviewDate %>
-    <%= form.date_field(:interviewDate, :required => true, min: "2021-10-11", max: "2021-10-14")%>
+    <% User.list_days.each do |item| %>
+      <%= form.radio_button :interviewDate, name = item %> <%= item %><br>
+    <% end %>
     <%= form.label :interviewTime %>
-    <%= form.time_select :interviewTime, :start_hour => 8, :end_hour => 14, :minute_step => 30, :ampm => true, :time_separator => "" %>
+    <% User.list_times.each do |i| %>
+      <%= form.radio_button :interviewTime, name = i %> <%= i %><br>
+    <% end %>
   </div>
 
   <div class="actions">
