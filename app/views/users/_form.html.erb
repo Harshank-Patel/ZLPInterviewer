@@ -18,13 +18,9 @@
     <%= form.text_field :phoneNumber, :required => true %>
     <%= form.label :email %>
     <%= form.text_field :email, :required => true %>
-    <%= form.label :interviewDate %>
-    <% User.list_days.each do |item| %>
-      <%= form.radio_button :interviewDate, name = item %> <%= item %><br>
-    <% end %>
-    <%= form.label :interviewTime %>
-    <% User.list_times.each do |i| %>
-      <%= form.radio_button :interviewTime, name = i %> <%= i %><br>
+    <% User.list_days_and_times.each do |date_time| %>
+      <%= form.label "Interview Date and Time"%>
+      <%= form.radio_button :interviewDateTime, [date_time] %> <%= date_time %><br>
     <% end %>
   </div>
 
