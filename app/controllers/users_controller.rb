@@ -13,8 +13,14 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    @user = User.new
     @admin = Admin.all
+    if @admin.exists?
+      @user = User.new
+    else
+      respond_to do |format|
+        format.html { render js: "No schedule found"}
+      end
+    end
   end
 
   # GET /users/1/edit
