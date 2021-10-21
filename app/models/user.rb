@@ -91,7 +91,6 @@ class User < ApplicationRecord
 
         x = start_time
         min = 0
-        break_count = 0
         time_list = []
         while x <= end_time
             if(x <= 12)
@@ -120,12 +119,26 @@ class User < ApplicationRecord
             else
                 x = x + 1
             end
-            break_count = break_count + 1
         end
 
 
         #puts (time_list)
         #return time_list
+
+        # remove time slot every __ interviews
+        # break time is equal to interview time
+        break_count = 0
+        i = 0
+
+        time_list.each do |t|
+            if break_count == num_breaks.to_i
+                time_list.delete_at(i)
+                break_count = 0
+            end
+            break_count = break_count + 1
+            i = i + 1
+        end
+
 
         date_time_dict = {}
         date_list.each do |dt|
@@ -150,6 +163,7 @@ class User < ApplicationRecord
                 final_date_time_list.push(dt)
             end
         end
+
 
         return final_date_time_list 
 
