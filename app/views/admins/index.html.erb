@@ -17,7 +17,8 @@
   </thead>
 
   <tbody>
-    <% @users.each do |user| %>
+    <% #Admin.sort_datetime.each do |user| %>
+    <% @users.sort_by(&:interviewDateTime).each do |user| %>
       <tr>
         <td><%= user.name %></td>
         <td><%= user.phoneNumber %></td>
