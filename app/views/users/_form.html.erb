@@ -27,16 +27,15 @@
     <br>
     <br>
     <%= form.text_field :email, :size => "10", :required => true, placeholder:"Email", class: "form-control", :style=> 'max-width: 33%;min-width: 330px;'   %>
-    <br>
-    <br>
-    <%= form.label :interviewDate %>
-    <br>
-    <% User.list_days.each do |item| %>
-      <%= form.radio_button :interviewDate, name = item %> <%= item %><br>
-    <% end %>
-    <%= form.label :interviewTime %>
-    <% User.list_times.each do |i| %>
-      <%= form.radio_button :interviewTime, name = i %> <%= i %><br>
+    <%= cur_date = "" %>
+    <% User.list_days_and_times.each do |date_time| %>
+      <% new_date = date_time.split(/,/)[0] %>
+      <% if new_date != cur_date %>
+        <%= form.label "Interview Date: " + new_date  %>
+        <% cur_date = new_date %>
+      <% end %>
+      <%= form.radio_button :interviewDateTime, [date_time] %> <%= date_time.split(/,/)[1] %><br>
+
     <% end %>
   </div>
 

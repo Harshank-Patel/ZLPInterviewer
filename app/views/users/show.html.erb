@@ -8,9 +8,9 @@
   <strong>Email:</strong>
   <%= @user.email %>
   <strong>Interview Date:</strong>
-  <%= @user.interviewDate %>
+  <%= @user.interviewDateTime.split(/,/)[0] %>
   <strong>Interview Time:</strong>
-  <%= @user.interviewTime.strftime("%I:%M%P") %>
+  <%= @user.interviewDateTime.split(/,/)[1] %>
 </p>
 
 <%= link_to 'Back', users_path%>

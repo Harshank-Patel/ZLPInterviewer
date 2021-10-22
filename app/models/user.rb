@@ -2,8 +2,7 @@ class User < ApplicationRecord
     validates :name, presence: true
     validates :phoneNumber, presence: true
     validates :email, presence: true
-    validates :interviewDate, presence: true
-    validates :interviewTime, presence: true
+    validates :interviewDateTime, presence: true
 
     def self.get_dates
         #start_date = Admin.dateRange.split(/-/)[0]
@@ -48,31 +47,29 @@ class User < ApplicationRecord
         return [start_time, end_time]
     end
 
-    def self.list_days
+
+    def self.list_days_and_times
         @admins = Admin.all
+
         my_date = ""
+        num_breaks = ""
+        interview_length = ""
+        my_time = ""
+        num_rooms = ""
         @admins.each do |a|
             my_date = a.dateRange
+            num_breaks = a.numBreaks
+            interview_length = a.interviewLength
+            my_time = a.timeRange
+            num_rooms = a.numRooms
         end
 
         start_date = Date.parse(my_date.split(/:/)[0].to_s)
         end_date = Date.parse(my_date.split(/:/)[1].to_s)
-        date_list = (start_date..end_date).map(&:to_s)
-        #puts (date_list)
-        return date_list
-    end
+        date_list = (start_date..end_date).map(&:to_s) #date list finished
+        #return date_list
 
-    def self.list_times
-        @admins = Admin.all
-        num_breaks = ""
-        interview_length = ""
-        my_time = ""
-        @admins.each do |a|
-            num_breaks = a.numBreaks
-            interview_length = a.interviewLength
-            my_time = a.timeRange
-        end
-
+        # time list parsing
         start_time = my_time.split(/-/)[0].rstrip
         end_time = my_time.split(/-/)[1].rstrip
 
@@ -94,7 +91,6 @@ class User < ApplicationRecord
 
         x = start_time
         min = 0
-        break_count = 0
         time_list = []
         while x <= end_time
             if(x <= 12)
@@ -123,12 +119,54 @@ class User < ApplicationRecord
             else
                 x = x + 1
             end
-            break_count = break_count + 1
         end
 
 
-        puts (time_list)
-        return time_list
+        #puts (time_list)
+        #return time_list
+
+        # remove time slot every __ interviews
+        # break time is equal to interview time
+        break_count = 0
+        i = 0
+
+        time_list.each do |t|
+            if break_count == num_breaks.to_i
+                time_list.delete_at(i)
+                break_count = 0
+            end
+            break_count = break_count + 1
+            i = i + 1
+        end
+
+
+        date_time_dict = {}
+        date_list.each do |dt|
+            time_list.each do |t|
+                date_time_dict[dt.to_s + "," + t.to_s] = num_rooms.to_i
+            end
+        end
+
+        @users = User.all
+        used_date_and_time = []
+        @users.each do |u|
+            used_date_and_time.push(u.interviewDateTime)
+        end
+
+        used_date_and_time.each do |dt|
+            date_time_dict[dt] = date_time_dict[dt] - 1
+        end
+
+        final_date_time_list = []
+        date_time_dict.keys.each do |dt|
+            if date_time_dict[dt] > 0
+                final_date_time_list.push(dt)
+            end
+        end
+
+
+        return final_date_time_list 
+
     end
 
 
