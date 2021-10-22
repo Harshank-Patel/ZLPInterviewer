@@ -66,8 +66,6 @@ class AdminsController < ApplicationController
   end
 
   def get_dates
-    #startDate = dateRange.split(/-/)[0]
-    #endDate = dateRange.split(/-/)[1]
     dateRange.split(/-/) # returns dateRange as an array with start date as first element, end date as last 
   end
 
@@ -79,7 +77,7 @@ class AdminsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def admin_params
-      params.require(:admin).permit(:scheduleName, :dateRange, :timeRange, :interviewLength, :numBreaks)
+      params.require(:admin).permit(:scheduleName, :dateRange, :timeRange, :interviewLength, :numBreaks, :numRooms)
     end
 
 

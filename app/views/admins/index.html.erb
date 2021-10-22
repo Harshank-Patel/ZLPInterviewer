@@ -17,13 +17,14 @@
   </thead>
 
   <tbody>
-    <% @users.each do |user| %>
+    <% #Admin.sort_datetime.each do |user| %>
+    <% @users.sort_by(&:interviewDateTime).each do |user| %>
       <tr>
         <td><%= user.name %></td>
         <td><%= user.phoneNumber %></td>
         <td><%= user.email %></td>
-        <td><%= user.interviewDate %></td>
-        <td><%= user.interviewTime.strftime("%I:%M%P") %></td>
+        <td><%= user.interviewDateTime.split(/,/)[0] %></td>
+        <td><%= user.interviewDateTime.split(/,/)[1] %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -42,7 +43,8 @@
       <th>Date Range</th>
       <th>Time Range</th>
       <th>Interview Length</th>
-      <th>Number of breaks</th>
+      <th>Break after how many interviews</th>
+      <th>Number of rooms</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -55,6 +57,7 @@
         <td><%= admin.timeRange%></td>
         <td><%= admin.interviewLength%></td>
         <td><%= admin.numBreaks%></td>
+        <td><%= admin.numRooms%></td>
         <td><%= link_to 'Show', admin %></td>
         <td><%= link_to 'Edit', edit_admin_path(admin) %></td>
         <td><%= link_to 'Destroy', admin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
