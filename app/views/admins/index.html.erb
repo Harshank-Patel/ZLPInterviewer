@@ -25,7 +25,7 @@
         <td><%= user.email %></td>
         <td><%= user.interviewDateTime.split(/,/)[0] %></td>
         <td><%= user.interviewDateTime.split(/,/)[1] %></td>
-        <td><%= link_to 'Edit', edit_user_path(user), id: 'edit_interviewee' %></td>
+        <td><%= link_to 'Edit Interviewee', edit_user_path(user), id: 'edit_interviewee' %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -59,7 +59,7 @@
         <td><%= admin.numBreaks%></td>
         <td><%= admin.numRooms%></td>
         <td><%= link_to 'Show', admin %></td>
-        <td><%= link_to 'Edit', edit_admin_path(admin), id: 'edit_schedule' %></td>
+        <td><%= link_to 'Edit Schedule', edit_admin_path(admin), id: 'edit_schedule', class: 'update_admin' %></td>
         <td><%= link_to 'Destroy', admin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

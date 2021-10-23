@@ -39,3 +39,5 @@ RSpec.describe User, type: :model do
     expect(interviewTime).to be_valid
   end
 end
+
+

@@ -55,9 +55,10 @@ RSpec.describe 'Creating an appoinment!', type: :feature do
     fill_in 'admin_numBreaks', with: '3'
     fill_in 'admin_numRooms', with: '2'
     click_on 'Create Admin'
-    # doesn't work
-    click_link('edit_schedule')
+    click_on 'Back'
+    click_on 'Edit Schedule'
     click_on 'Update Admin'
     expect(page).to have_content('Admin was successfully updated.')
   end
 end
+
