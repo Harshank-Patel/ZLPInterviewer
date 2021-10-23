@@ -46,4 +46,20 @@ RSpec.describe 'Creating an appoinment!', type: :feature do
         expect(page).to have_content('3')
         expect(page).to have_content('2')
     end
+
+    scenario 'Update Admin Page' do
+        visit new_admin_path
+        fill_in 'admin_scheduleName', with: 'Fall 2021' 
+        fill_in 'admin_dateRange', with: '2021-10-05:2021-10-08' 
+        fill_in 'admin_timeRange', with: '8:00am-5:00pm' 
+        fill_in 'admin_interviewLength', with: '30min' 
+        fill_in 'admin_numBreaks', with: '3'
+        fill_in 'admin_numRooms', with: '2'
+        click_on 'Create Admin'
+        # doesn't work
+        click_link('edit_schedule')
+        click_on 'Update Admin'
+        expect(page).to have_content('Admin was successfully updated.')
+
+    end
 end
