@@ -13,8 +13,14 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    @user = User.new
     @admin = Admin.all
+    if @admin.exists?
+      @user = User.new
+    else
+      respond_to do |format|
+        format.html { render js: "No schedule found"}
+      end
+    end
   end
 
   # GET /users/1/edit
@@ -67,6 +73,10 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:name, :phoneNumber, :email, :interviewDate, :interviewTime)
+      params.require(:user).permit(:name, :phoneNumber, :email, :interviewDateTime)
+    end
+
+    def access_admin
+      @admins = Admin.all
     end
 end

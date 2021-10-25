@@ -6,6 +6,7 @@ class CreateAdmins < ActiveRecord::Migration[6.1]
       t.string :timeRange
       t.string :interviewLength
       t.string :numBreaks
+      t.string :numRooms
 
       t.timestamps
     end

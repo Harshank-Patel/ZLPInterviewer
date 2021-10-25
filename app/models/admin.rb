@@ -4,4 +4,18 @@ class Admin < ApplicationRecord
     validates :timeRange, presence: true
     validates :interviewLength, presence: true
     validates :numBreaks, presence: true
+    validates :numRooms, presence: true
+
+    def self.sort_datetime
+        @users = User.all
+        dt_list = []
+        @users.each do |dt|
+            dt_list.push(dt.interviewDateTime)
+        end
+        dt_list = dt_list.sort
+        puts dt_list
+        return dt_list
+
+    end
+
 end
