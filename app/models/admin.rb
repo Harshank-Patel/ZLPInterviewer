@@ -7,7 +7,7 @@ class Admin < ApplicationRecord
   validates :interviewLength, presence: true
   validates :numBreaks, presence: true
   validates :numRooms, presence: true
-
+=begin
   def self.sort_datetime
     @users = User.all
     dt_list = []
@@ -18,4 +18,5 @@ class Admin < ApplicationRecord
     puts dt_list
     dt_list
   end
+=end
 end

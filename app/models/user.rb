@@ -5,7 +5,7 @@ class User < ApplicationRecord
   validates :phoneNumber, presence: true
   validates :email, presence: true
   validates :interviewDateTime, presence: true
-
+=begin
   def self.get_dates
     # start_date = Admin.dateRange.split(/-/)[0]
     # end_date = Admin.dateRange.split(/-/)[1]
@@ -16,7 +16,6 @@ class User < ApplicationRecord
     end
     my_date
   end
-
   def self.get_times
     @admins = Admin.all
     my_time = ''
@@ -48,7 +47,7 @@ class User < ApplicationRecord
     puts(end_time)
     [start_time, end_time]
   end
-
+=end
   def self.list_days_and_times
     @admins = Admin.all
 

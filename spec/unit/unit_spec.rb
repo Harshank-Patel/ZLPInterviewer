@@ -40,4 +40,16 @@ RSpec.describe User, type: :model do
   end
 end
 
+RSpec.describe Admin, type: :model do
+  subject do
+    described_class.new(scheduleName: 'Schedule', dateRange: '2021-10-22:2021-10-29', timeRange: '10:30am-9:30pm',
+                        interviewLength: 30, numBreaks: 2, numRooms: 2)
+    end
+  it 'is valid schedule name with valid attributes' do
+    Admin.new(scheduleName: 'Schedule', dateRange: '2021-10-22:2021-10-29', timeRange: '10:30am-9:30pm',
+      interviewLength: 30, numBreaks: 2, numRooms: 2)
+    expect(scheduleName).to be_valid
+    end
+  end
 
+  

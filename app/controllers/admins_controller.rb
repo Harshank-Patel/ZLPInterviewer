@@ -1,3 +1,4 @@
+#The controller for admin
 # frozen_string_literal: true
 
 class AdminsController < ApplicationController
@@ -62,11 +63,11 @@ class AdminsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+=begin
   def get_dates
     dateRange.split(/-/) # returns dateRange as an array with start date as first element, end date as last
   end
-
+=end
   private
 
   # Use callbacks to share common setup or constraints between actions.
