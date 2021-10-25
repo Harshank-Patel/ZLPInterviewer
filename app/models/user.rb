@@ -150,8 +150,11 @@ class User < ApplicationRecord
         @users = User.all
         used_date_and_time = []
         @users.each do |u|
-            used_date_and_time.push(u.interviewDateTime)
+            if u.interviewDateTime.split(/,/)[0] >= start_date.to_s and u.interviewDateTime.split(/,/)[0] <= end_date.to_s
+                used_date_and_time.push(u.interviewDateTime)
+            end
         end
+
 
         used_date_and_time.each do |dt|
             date_time_dict[dt] = date_time_dict[dt] - 1
