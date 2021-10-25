@@ -42,11 +42,11 @@ RSpec.describe 'Creating an appoinment!', type: :feature do
     expect(page).to have_content('2021-10-05:2021-10-08')
     expect(page).to have_content('8:00am-5:00pm')
     expect(page).to have_content('30min')
-    expect(page).to have_content('3')
+    expect(page).to have_content('3') 
     expect(page).to have_content('2')
   end
 
-  scenario 'Update Admin Page' do
+  scenario 'Delete Admin Page' do
     visit new_admin_path
     fill_in 'admin_scheduleName', with: 'Fall 2021'
     fill_in 'admin_dateRange', with: '2021-10-05:2021-10-08'
@@ -56,9 +56,26 @@ RSpec.describe 'Creating an appoinment!', type: :feature do
     fill_in 'admin_numRooms', with: '2'
     click_on 'Create Admin'
     click_on 'Back'
-    click_on 'Edit Schedule'
-    click_on 'Update Admin'
-    expect(page).to have_content('Admin was successfully updated.')
+    click_on 'Destroy'
+    #click_on 'Update Admin'
+    expect(page).to have_content('Admin was successfully destroyed.')
   end
+
+
+scenario 'Update Admin Page' do
+  visit new_admin_path
+  fill_in 'admin_scheduleName', with: 'Fall 2021'
+  fill_in 'admin_dateRange', with: '2021-10-05:2021-10-08'
+  fill_in 'admin_timeRange', with: '8:00am-5:00pm'
+  fill_in 'admin_interviewLength', with: '30min'
+  fill_in 'admin_numBreaks', with: '3'
+  fill_in 'admin_numRooms', with: '2'
+  click_on 'Create Admin'
+  click_on 'Back'
+  click_on 'Edit Schedule'
+  click_on 'Update Admin'
+  expect(page).to have_content('Admin was successfully updated.')
+  end
+
 end
 
