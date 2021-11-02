@@ -17,8 +17,18 @@
   </thead>
 
   <tbody>
-    <% #Admin.sort_datetime.each do |user| %>
+    <% #latest_date = ""%>
+    <% #@admins.each do |admin| %>
+      <% #latest_date = admin.dateRange %>
+    <% #end %>
+    <% #start_date = latest_date.split(/:/)[0] %>
+    <% #end_date = latest_date.split(/:/)[1] %>
+
     <% @users.sort_by(&:interviewDateTime).each do |user| %>
+      <% #if user.interviewDateTime.split(/,/)[0] >= start_date.to_s and user.interviewDateTime.split(/,/)[1] <= end_date.to_s %>
+        <% #next %>
+      <% #end %>
+
       <tr>
         <td><%= user.name %></td>
         <td><%= user.phoneNumber %></td>
