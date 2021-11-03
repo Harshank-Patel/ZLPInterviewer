@@ -33,7 +33,9 @@
     <% User.list_days_and_times.each do |date_time| %>
       <% new_date = date_time.split(/,/)[0] %>
       <% if new_date != cur_date %>
-        <%= form.label "Interview Date: " + new_date  %>
+        <% day_of_week = DateTime.parse(new_date).to_date.strftime("%A").to_str.capitalize() %>
+        <br>
+        <%= form.label "Interview Date: " + day_of_week + ", "+ new_date %>
         <br>
         <% cur_date = new_date %>
       <% end %>
