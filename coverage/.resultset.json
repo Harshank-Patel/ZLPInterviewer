@@ -196,32 +196,6 @@
           null
         ]
       },
-      "/ZLPInterviewer/app/models/admin.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ]
-      },
       "/ZLPInterviewer/app/controllers/admins_controller.rb": {
         "lines": [
           null,
@@ -313,6 +287,32 @@
           null,
           null,
           1,
+          null
+        ]
+      },
+      "/ZLPInterviewer/app/models/admin.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
           null
         ]
       },
@@ -454,6 +454,6 @@
         }
       }
     },
-    "timestamp": 1635195465
+    "timestamp": 1635987118
   }
 }
