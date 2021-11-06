@@ -13,21 +13,28 @@
     <img id="logo" src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Zachry_Leadership_Program_Logo.jpg" width="330" height="70" class="d-inline-block align-top" alt="">
   </a>
 </nav>
-<h1> <center> Thank you for signing up </center></h1>
+<h1 style="text-align:center"> <center> Thank You for signing up </center></h1>
+<center>
+    <ui style="list-style-type:none">
+      <li>
+        <strong>Name:</strong>
+        <%= @user.name %>
+      </li>
+      <li>
+        <strong>Interview Date:</strong>
+        <%= @user.interviewDateTime.split(/,/)[0] %>
+      </li>
+      <li>
+        <strong>Interview Time:</strong>
+        <%= @user.interviewDateTime.split(/,/)[1] %>
+      </li>
+    </ui>
+ 
+<center>
 <p style="text-align:center;">
-  <strong>Name:</strong>
-  <%= @user.name %>
-  <br>
-  <strong>Interview Date:</strong>
-  <%= @user.interviewDateTime.split(/,/)[0] %>
-  <br>
-  <strong>Interview Time:</strong>
-  <%= @user.interviewDateTime.split(/,/)[1] %>
-</p>
-<p style="text-align:center;">
-  <strong>Please email seth.sullivan@tamu.edu if you need to reschedule.</strong>
+  <strong style="text-align:center;">Please email seth.sullivan@tamu.edu if you need to reschedule.</strong>
 </p>
 <br>
 <center>
-<%= link_to 'Back', users_path, class:'btn btn-warning', id:'whiteIt'%>
+<%= link_to 'Back', users_path, class:'btn btn-info', id:'whiteIt'%>
 </center>
