@@ -1,0 +1,22 @@
+# app/views/order_mailer/welcome_email.html.erb
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>You have an interview scheduled from the Zachary Leadership Program <%= @user.name %>!</p>
+    <p>
+    Interview Details details<br>
+    --------------------------
+    </p>
+    <p>Name: <%= @user.name %></p>
+    <p>Email: <%= @user.email %></p>
+    <p>interviewDateTime: <%= @user.interviewDateTime %></p>
+    <p>Phone: <%= @user.phoneNumber %></p>
+    <p>
+    ----------
+    </p>
+  </body>
+</html>

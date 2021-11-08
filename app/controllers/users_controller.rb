@@ -48,6 +48,8 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to admins_url, notice: "User was successfully updated." }
+        UserMailer.with(user: @user).welcome_email.deliver_later
+
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit, status: :unprocessable_entity }
