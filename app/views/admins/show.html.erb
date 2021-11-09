@@ -1,17 +1,49 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  </head>
+  <body>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Schedule Name:</strong>
-  <%= @admin.scheduleName %>
-  <strong>Date Range:</strong>
-  <%= @admin.dateRange%>
-  <strong>Time Range:</strong>
-  <%= @admin.timeRange%>
-  <strong>Interview Length:</strong>
-  <%= @admin.interviewLength %>
-  <strong>Number of Breaks:</strong>
-  <%= @admin.numBreaks%>
-</p>
-
-<%= link_to 'Edit', edit_admin_path(@admin) %> |
-<%= link_to 'Back', admins_path %>
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <img id="logo" src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Zachry_Leadership_Program_Logo.jpg" width="330" height="70" class="d-inline-block align-top" alt="">
+  </a>
+</nav>
+<h1 style="text-align:center"> <center> Schedule Details: </center></h1>
+<center>
+<ui style="list-style-type:none">
+  <li>
+    <strong>Schedule Name:</strong>
+    <%= @admin.scheduleName %>
+  </li>
+  <br>
+  <li>
+    <strong>Date Range:</strong>
+    <%= @admin.dateRange%>
+  </li>
+  <br>
+  <li>
+    <strong>Time Range:</strong>
+    <%= @admin.timeRange%>
+  </li>
+  <br>
+  <li>
+    <strong>Interview Length:</strong>
+    <%= @admin.interviewLength %>
+  </li>
+  <br>
+  <li>
+    <strong>Number of Breaks:</strong>
+    <%= @admin.numBreaks%>
+  </li>
+</ui>
+</center>
+<br>
+<center>
+<%= link_to 'Edit', edit_admin_path(@admin), class:'btn btn-warning', id:'whiteIt'%> 
+<%= link_to 'Back', admins_path, class:'btn btn-info', id:'whiteIt'%>
+</center>

@@ -1,3 +1,11 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  </head>
+  <body  style="padding: 5%;>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
 <%= form_with(model: admin) do |form| %>
   <% if admin.errors.any? %>
     <div id="error_explanation">
@@ -11,23 +19,28 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label "Schedule Name"%>
-    <%= form.text_field :scheduleName %>
-    <%= form.label "Date Range (YYYY-MM-DD:YYYY-MM-DD)"%>
-    <%= form.text_field :dateRange%>
-    <%= form.label "Time Range (XX:XXam - XX:XXpm)"%>
-    <%= form.text_field :timeRange%>
-    <%= form.label "Interview Length (mins)"%>
-    <%= form.text_field :interviewLength%>
-    <%= form.label "Break every __ interviews"%>
-    <%= form.text_field :numBreaks%>
-    <%= form.label "Number of Rooms"%>
-    <%= form.text_field :numRooms%>
+  <div class="field" style="padding-top: 5%">
+    <%= form.text_field :scheduleName, :required => true , placeholder:" Schedule Name", class: "form-control",:style=> 'max-width: 33%;min-width: 330px;' %>
+    <br>
+    <br>
+    <%= form.text_field :dateRange, :required => true , placeholder:"Date Range (YYYY-MM-DD:YYYY-MM-DD)", class: "form-control",:style=> 'max-width: 33%;min-width: 330px;' %>
+    <br>
+    <br>
+    <%= form.text_field :timeRange, :required => true , placeholder:"Time Range (XX:XXam - XX:XXpm)", class: "form-control",:style=> 'max-width: 33%;min-width: 330px;' %>
+    <br>
+    <br>
+    <%= form.text_field :interviewLength, :required => true , placeholder:"Interview Length (mins)", class: "form-control",:style=> 'max-width: 33%;min-width: 330px;' %>
+    <br>
+    <br>
+    <%= form.text_field :numBreaks, :required => true , placeholder:"Break every __ interviews", class: "form-control",:style=> 'max-width: 33%;min-width: 330px;' %>
+    <br>
+    <br>
+    <%= form.text_field :numRooms, :required => true , placeholder:"Number of Rooms", class: "form-control",:style=> 'max-width: 33%;min-width: 330px;' %>
   </div>
 
-
+  <center>
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Submit", class: "btn btn-primary" %>
   </div>
+  </center>
 <% end %>
