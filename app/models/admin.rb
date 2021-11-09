@@ -48,8 +48,6 @@ class Admin < ApplicationRecord
     end
 
 
-
-
     def self.sort_datetime
         @users = User.all
         dt_list = []

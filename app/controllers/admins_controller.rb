@@ -17,10 +17,6 @@ class AdminsController < ApplicationController
   # GET /admins/new
   def new
     @admin = Admin.new
-    #@admins.each do |admin|
-    #  startDate = dateRange.split(/-/)[0]
-    #  endDate = dateRange.split(/-/)[1]
-    #end
 
   end
 
@@ -34,7 +30,7 @@ class AdminsController < ApplicationController
 
     respond_to do |format|
       if @admin.save
-        format.html { redirect_to @admin, notice: "Admin was successfully created." }
+        format.html { redirect_to @admin }
         format.json { render :show, status: :created, location: @admin }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -47,7 +43,7 @@ class AdminsController < ApplicationController
   def update
     respond_to do |format|
       if @admin.update(admin_params)
-        format.html { redirect_to @admin, notice: "Admin was successfully updated." }
+        format.html { redirect_to @admin }
         format.json { render :show, status: :ok, location: @admin }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -60,7 +56,16 @@ class AdminsController < ApplicationController
   def destroy
     @admin.destroy
     respond_to do |format|
-      format.html { redirect_to admins_url, notice: "Admin was successfully destroyed." }
+      format.html { redirect_to admins_url }
+      format.json { head :no_content }
+    end
+  end
+
+  def destroy_users
+    User.destroy_all
+
+    respond_to do |format|
+      format.html { redirect_to admins_url }
       format.json { head :no_content }
     end
   end

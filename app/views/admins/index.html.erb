@@ -22,21 +22,15 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Phone Number</th>
-      <th>Email</th>
-      <th>Interview Date</th>
-      <th>Interview Time</th>
+      <th>| Phone Number  | </th>
+      <th>Email </th>
+      <th>| Interview Date  |</th>
+      <th>Interview Time  </th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% #latest_date = ""%>
-    <% #@admins.each do |admin| %>
-      <% #latest_date = admin.dateRange %>
-    <% #end %>
-    <% #start_date = latest_date.split(/:/)[0] %>
-    <% #end_date = latest_date.split(/:/)[1] %>
 
     <% dt_array = [] %>
     <% @users.sort_by(&:interviewDateTime).each do |user| %>
@@ -59,38 +53,47 @@
 
     <% dt_array = dt_array.sort_by {|d,t| [d, t]} %>
 
-    <% #@users.sort_by(&:interviewDateTime).each do |user| %>
     <% dt_array.each do |l| %>
       <% user = l[2] %>
       <% #if user.interviewDateTime.split(/,/)[0] >= start_date.to_s and user.interviewDateTime.split(/,/)[1] <= end_date.to_s %>
         <% #next %>
       <% #end %>
+      <%if !user.phoneNumber.include? "-" %>
+        <%new_phoneNumber = user.phoneNumber[0..2].to_s + "-" + user.phoneNumber[3..5].to_s + "-" + user.phoneNumber[6..9].to_s %>
+      <%else%>
+        <%new_phoneNumber = user.phoneNumber%>
+      <%end%>
 
       <tr>
         <td><%= user.name %></td>
-        <td><%= user.phoneNumber %></td>
+        <td><%= new_phoneNumber %></td>
         <td><%= user.email %></td>
         <td><%= user.interviewDateTime.split(/,/)[0] %></td>
         <td><%= user.interviewDateTime.split(/,/)[1] %></td>
         <td><%= link_to 'Edit', edit_user_path(user), class:'btn btn-warning btn-sm', id:'whiteIt'%></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger btn-sm', id:'whiteIt'%></td>
+        <td><%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger btn-sm', id:'whiteIt'%></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
+<br>
+<%= link_to 'Delete All Users', destroy_users_admins_path, data: { confirm: 'Are you sure?' }, class:'btn btn-danger btn-sm', id:'whiteIt'%>
+
 <center>
+<br>
+<br>
 <h1>List of Schedules:</h1>
 </center>
 
 <table>
   <thead>
     <tr>
-      <th>Schedule Name</th>
+      <th>Schedule Name |</th>
       <th>Date Range</th>
-      <th>Time Range</th>
-      <th>Interview Length</th>
-      <th>Break after how many interviews</th>
+      <th>| Time Range</th>
+      <th>| Interview Length | </th>
+      <th>Break after __ interviews | </th>
       <th>Number of rooms</th>
       <th colspan="3"></th>
     </tr>
@@ -107,7 +110,7 @@
         <td><%= admin.numRooms%></td>
         <td><%= link_to 'Show', admin, class:'btn btn-primary btn-sm', id:'whiteIt'%></td>
         <td><%= link_to 'Edit', edit_admin_path(admin), class:'btn btn-warning btn-sm', id:'whiteIt'%></td>
-        <td><%= link_to 'Destroy', admin, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger btn-sm', id:'whiteIt'%></td>
+        <td><%= link_to 'Delete', admin, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger btn-sm', id:'whiteIt'%></td>
       </tr>
     <% end %>
   </tbody>

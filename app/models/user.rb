@@ -9,9 +9,11 @@ class User < ApplicationRecord
     validate :phone_validator
 
     def phone_validator
-        phone_regex = /\A([0-9]{3})-([0-9]{3})-([0-9]{4})\z/
+        #phone_regex = /\A([0-9]{3})-([0-9]{3})-([0-9]{4})\z/
+        phone_regex = /\A([0-9]{10})\z/
+        phone_regex2 = /\A([0-9]{3})-([0-9]{3})-([0-9]{4})\z/
         phone_number= "Phone Number"
-        if phoneNumber.blank? || !phoneNumber.match(phone_regex) 
+        if phoneNumber.blank? || (!phoneNumber.match(phone_regex) && !phoneNumber.match(phone_regex2))
             self.errors.add(:phone_number, 'must be of format: xxx-xxx-xxxx')
         end
     end
