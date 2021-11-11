@@ -2,120 +2,105 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  </head>
-  <body>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
-
-<p id="notice"><%= notice %></p>
-<nav class="navbar navbar-light bg-light">
-  <a class="navbar-brand" href="#">
-    <img id="logo" src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Zachry_Leadership_Program_Logo.jpg" width="330" height="70" class="d-inline-block align-top" alt="">
-  </a>
-</nav>
-
-<center>
-<h1>Interviews scheduled:</h1>
-</center>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>| Phone Number  | </th>
-      <th>Email </th>
-      <th>| Interview Date  |</th>
-      <th>Interview Time  </th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-
-    <% dt_array = [] %>
-    <% @users.sort_by(&:interviewDateTime).each do |user| %>
-      <% dt_array.push([user.interviewDateTime.split(/,/)[0], user.interviewDateTime.split(/,/)[1], user]) %>
-    <% end %>
-
-    <% dt_array.each do |dt| %>
-      <% if dt[1].to_s.include? "am"%> 
-        <% dt[1] = dt[1].split(/:/)[0].to_i + dt[1].split(/:/)[1].to_i/60 %>
-      <% elsif dt[1].to_s.include? "pm"%> 
-        <% if dt[1].split(/:/)[0].to_i == 12%> 
-          <% dt[1] = dt[1].split(/:/)[0].to_i + dt[1].split(/:/)[1].to_i/60 %>
-        <% else %>
-          <% dt[1] = dt[1].split(/:/)[0].to_i + 12 + dt[1].split(/:/)[1].to_i/60 %>
-        <% end %>
-      <% end %>
-      <% dt[1] = dt[1].to_i %>
-    <% end %>
-
-
-    <% dt_array = dt_array.sort_by {|d,t| [d, t]} %>
-
-    <% dt_array.each do |l| %>
-      <% user = l[2] %>
-      <% #if user.interviewDateTime.split(/,/)[0] >= start_date.to_s and user.interviewDateTime.split(/,/)[1] <= end_date.to_s %>
-        <% #next %>
-      <% #end %>
-      <%if !user.phoneNumber.include? "-" %>
-        <%new_phoneNumber = user.phoneNumber[0..2].to_s + "-" + user.phoneNumber[3..5].to_s + "-" + user.phoneNumber[6..9].to_s %>
-      <%else%>
-        <%new_phoneNumber = user.phoneNumber%>
-      <%end%>
-
-      <tr>
-        <td><%= user.name %></td>
-        <td><%= new_phoneNumber %></td>
-        <td><%= user.email %></td>
-        <td><%= user.interviewDateTime.split(/,/)[0] %></td>
-        <td><%= user.interviewDateTime.split(/,/)[1] %></td>
-        <td><%= link_to 'Edit', edit_user_path(user), class:'btn btn-warning btn-sm', id:'whiteIt'%></td>
-        <td><%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger btn-sm', id:'whiteIt'%></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-<%= link_to 'Delete All Users', destroy_users_admins_path, data: { confirm: 'Are you sure?' }, class:'btn btn-danger btn-sm', id:'whiteIt'%>
-
-<center>
-<br>
-<br>
-<h1>List of Schedules:</h1>
-</center>
-
-<table>
-  <thead>
-    <tr>
-      <th>Schedule Name |</th>
-      <th>Date Range</th>
-      <th>| Time Range</th>
-      <th>| Interview Length | </th>
-      <th>Break after __ interviews | </th>
-      <th>Number of rooms</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @admins.each do |admin| %>
-      <tr>
-        <td><%= admin.scheduleName %></td>
-        <td><%= admin.dateRange%></td>
-        <td><%= admin.timeRange%></td>
-        <td><%= admin.interviewLength%></td>
-        <td><%= admin.numBreaks%></td>
-        <td><%= admin.numRooms%></td>
-        <td><%= link_to 'Show', admin, class:'btn btn-primary btn-sm', id:'whiteIt'%></td>
-        <td><%= link_to 'Edit', edit_admin_path(admin), class:'btn btn-warning btn-sm', id:'whiteIt'%></td>
-        <td><%= link_to 'Delete', admin, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger btn-sm', id:'whiteIt'%></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Schedule', new_admin_path, class:'btn btn-success', id:'whiteIt' %>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <p id="notice"><%= notice %></p>
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+        <img id="logo" src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Zachry_Leadership_Program_Logo.jpg" width="330" height="70" class="d-inline-block align-top" alt="">
+        </a>
+    </nav>
+</head>
+<body>
+    <div style="padding:2%; margin-right: 5%;">
+    <center>
+        <h1>Interviews scheduled:</h1>
+    </center>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Phone Number</th>
+                <th>Email </th>
+                <th>Interview Date</th>
+                <th>Interview Time  </th>
+                <th colspan="5"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% dt_array = [] %>
+            <% @users.sort_by(&:interviewDateTime).each do |user| %>
+            <% dt_array.push([user.interviewDateTime.split(/,/)[0], user.interviewDateTime.split(/,/)[1], user]) %>
+            <% end %>
+            <% dt_array.each do |dt| %>
+            <% if dt[1].to_s.include? "am"%> 
+            <% dt[1] = dt[1].split(/:/)[0].to_i + dt[1].split(/:/)[1].to_i/60 %>
+            <% elsif dt[1].to_s.include? "pm"%> 
+            <% if dt[1].split(/:/)[0].to_i == 12%> 
+            <% dt[1] = dt[1].split(/:/)[0].to_i + dt[1].split(/:/)[1].to_i/60 %>
+            <% else %>
+            <% dt[1] = dt[1].split(/:/)[0].to_i + 12 + dt[1].split(/:/)[1].to_i/60 %>
+            <% end %>
+            <% end %>
+            <% dt[1] = dt[1].to_i %>
+            <% end %>
+            <% dt_array = dt_array.sort_by {|d,t| [d, t]} %>
+            <% dt_array.each do |l| %>
+            <% user = l[2] %>
+            <% #if user.interviewDateTime.split(/,/)[0] >= start_date.to_s and user.interviewDateTime.split(/,/)[1] <= end_date.to_s %>
+            <% #next %>
+            <% #end %>
+            <%if !user.phoneNumber.include? "-" %>
+            <%new_phoneNumber = user.phoneNumber[0..2].to_s + "-" + user.phoneNumber[3..5].to_s + "-" + user.phoneNumber[6..9].to_s %>
+            <%else%>
+            <%new_phoneNumber = user.phoneNumber%>
+            <%end%>
+            <tr>
+                <td><%= user.name %></td>
+                <td><%= new_phoneNumber %></td>
+                <td><%= user.email %></td>
+                <td><%= user.interviewDateTime.split(/,/)[0] %></td>
+                <td><%= user.interviewDateTime.split(/,/)[1] %></td>
+                <td><%= link_to 'Edit', edit_user_path(user), class:'btn btn-warning btn-sm', style:'color: white'%></td>
+                <td><%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger btn-sm', id:'whiteIt'%></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <br>
+    <%= link_to 'Delete All Users', destroy_users_admins_path, data: { confirm: 'Are you sure?' }, class:'btn btn-danger btn-sm', id:'whiteIt'%>
+    <center>
+        <br>
+        <br>
+        <h1>List of Schedules:</h1>
+    </center>
+    <table>
+        <thead>
+            <tr>
+                <th>Schedule Name</th>
+                <th>Date Range</th>
+                <th>Time Range</th>
+                <th>Interview Length</th>
+                <th>Break after __ interviews</th>
+                <th>Number of rooms</th>
+                <th colspan="6"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @admins.each do |admin| %>
+            <tr>
+                <td><%= admin.scheduleName %></td>
+                <td><%= admin.dateRange%></td>
+                <td><%= admin.timeRange%></td>
+                <td><%= admin.interviewLength%></td>
+                <td><%= admin.numBreaks%></td>
+                <td><%= admin.numRooms%></td>
+                <td><%= link_to 'Show', admin, class:'btn btn-primary btn-sm', id:'whiteIt'%></td>
+                <td><%= link_to 'Edit', edit_admin_path(admin), class:'btn btn-warning btn-sm', id:'whiteIt'%></td>
+                <td><%= link_to 'Delete', admin, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger btn-sm', id:'whiteIt'%></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <br>
+    <%= link_to 'New Schedule', new_admin_path, class:'btn btn-success', id:'whiteIt' %>
+    </div>

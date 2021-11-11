@@ -20,27 +20,29 @@
   <% end %>
 
   <div class="field" style="padding-top: 5%">
-    <%= form.text_field :scheduleName, :required => true , placeholder:" Schedule Name", class: "form-control",:style=> 'max-width: 33%;min-width: 330px;' %>
+    <%= form.text_field :scheduleName, :required => true , placeholder:" Schedule Name", class: "form-control",:style=> 'max-width: 33%;min-width: 85%;' %>
     <br>
     <br>
-    <%= form.text_field :dateRange, :required => true , placeholder:"Date Range (YYYY-MM-DD:YYYY-MM-DD)", class: "form-control",:style=> 'max-width: 33%;min-width: 330px;' %>
+    <%= form.text_field :dateRange, :required => true , placeholder:"Date Range (YYYY-MM-DD:YYYY-MM-DD)", class: "form-control",:style=> 'max-width: 33%;min-width: 85%;' %>
     <br>
     <br>
-    <%= form.text_field :timeRange, :required => true , placeholder:"Time Range (XX:XXam - XX:XXpm)", class: "form-control",:style=> 'max-width: 33%;min-width: 330px;' %>
+    <%= form.text_field :timeRange, :required => true , placeholder:"Time Range (XX:XXam - XX:XXpm)", class: "form-control",:style=> 'max-width: 33%;min-width: 85%;' %>
     <br>
     <br>
-    <%= form.text_field :interviewLength, :required => true , placeholder:"Interview Length (mins)", class: "form-control",:style=> 'max-width: 33%;min-width: 330px;' %>
+    <%= form.text_field :interviewLength, :required => true , placeholder:"Interview Length (mins)", class: "form-control",:style=> 'max-width: 33%;min-width: 85%;' %>
     <br>
     <br>
-    <%= form.text_field :numBreaks, :required => true , placeholder:"Break every __ interviews", class: "form-control",:style=> 'max-width: 33%;min-width: 330px;' %>
+    <%= form.text_field :numBreaks, :required => true , placeholder:"Break every __ interviews", class: "form-control",:style=> 'max-width: 33%;min-width: 85%;' %>
     <br>
     <br>
-    <%= form.text_field :numRooms, :required => true , placeholder:"Number of Rooms", class: "form-control",:style=> 'max-width: 33%;min-width: 330px;' %>
+    <%= form.text_field :numRooms, :required => true , placeholder:"Number of Rooms", class: "form-control",:style=> 'max-width: 33%;min-width: 85%;' %>
   </div>
 
   <center>
   <div class="actions">
     <%= form.submit "Submit", class: "btn btn-primary" %>
+    <%= link_to 'Back', admins_path, class:'btn btn-dark' %>
   </div>
+  
   </center>
 <% end %>
