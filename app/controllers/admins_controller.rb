@@ -10,6 +10,10 @@ class AdminsController < ApplicationController
   def index
     @admins = Admin.all
     @users = User.all
+    respond_to do |format|
+      format.html
+      format.csv { send_data @admins.to_csv, filename: "admins-#{Date.today}.csv" }
+    end
   end
 
   # GET /admins/1 or /admins/1.json

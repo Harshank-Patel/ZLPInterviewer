@@ -60,4 +60,34 @@ class Admin < ApplicationRecord
 
     end
 
+    def self.to_csv
+        @users = User.all
+        dt_array = []
+        @users.sort_by(&:interviewDateTime).each do |user|
+          dt_array.push([user.interviewDateTime.split(/,/)[0], user.interviewDateTime.split(/,/)[1], user])
+        end
+        dt_array.each do |dt|
+          if dt[1].to_s.include? "am" 
+            dt[1] = dt[1].split(/:/)[0].to_i + dt[1].split(/:/)[1].to_i/60
+          elsif dt[1].to_s.include? "pm"
+            if dt[1].split(/:/)[0].to_i == 12
+              dt[1] = dt[1].split(/:/)[0].to_i + dt[1].split(/:/)[1].to_i/60
+            else
+              dt[1] = dt[1].split(/:/)[0].to_i + 12 + dt[1].split(/:/)[1].to_i/60
+            end
+          end
+          dt[1] = dt[1].to_i
+        end
+        dt_array = dt_array.sort_by {|d,t| [d, t]}
+
+        csv_string = CSV.generate do |csv|
+          csv << ["Name", "Phone Number", "Email", "Interview Date", "Interview Time"]
+          dt_array.each do |l|
+            user = l[2]
+            csv << [user.name, user.phoneNumber, user.email, user.interviewDateTime.split(/,/)[0], user.interviewDateTime.split(/,/)[1]]
+          end
+        end
+    end
+
+
 end
