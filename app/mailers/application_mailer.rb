@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'zlpinterviewer@gmail.com'
+  default from: 'postmaster@aniruddhascsce412.xyz.mailgun.org'
   layout 'mailer'
 end

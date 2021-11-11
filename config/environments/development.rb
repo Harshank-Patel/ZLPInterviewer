@@ -71,6 +71,16 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+  :authentication => :plain,
+  :address => "smtp.mailgun.org",
+  :port => 587,
+  :domain => "sandbox9a8c685a0f6343289138c03d212cb79a.mailgun.org",
+  :user_name => "postmaster@sandbox9a8c685a0f6343289138c03d212cb79a.mailgun.org",
+  :password => "9caf4b82002f257011d0b34394f2d612-30b9cd6d-1839eb9a"
+  }
+
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
 end

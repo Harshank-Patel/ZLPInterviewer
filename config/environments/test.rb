@@ -52,6 +52,17 @@ Rails.application.configure do
   # Tell Active Support which deprecation messages to disallow.
   config.active_support.disallowed_deprecation_warnings = []
 
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+  :authentication => :plain,
+  :address => "smtp.mailgun.org",
+  :port => 587,
+  :domain => "sandbox9a8c685a0f6343289138c03d212cb79a.mailgun.org",
+  :user_name => "postmaster@sandbox9a8c685a0f6343289138c03d212cb79a.mailgun.org",
+  :password => "9caf4b82002f257011d0b34394f2d612-30b9cd6d-1839eb9a"
+  }
+
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
 
