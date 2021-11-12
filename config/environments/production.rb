@@ -96,16 +96,19 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-
+  $global_address = Rails.application.credentials.email[:address]
+  $global_domain = Rails.application.credentials.email[:domain]
+  $global_user_name = Rails.application.credentials.email[:user_name]
+  $global_password = Rails.application.credentials.email[:password]
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
   :authentication => :plain,
-  :address => "smtp.mailgun.org",
+  :address => $global_address,
   :port => 587,
-  :domain => "sandbox9a8c685a0f6343289138c03d212cb79a.mailgun.org",
-  :user_name => "postmaster@sandbox9a8c685a0f6343289138c03d212cb79a.mailgun.org",
-  :password => "9caf4b82002f257011d0b34394f2d612-30b9cd6d-1839eb9a"
+  :domain => $global_domain,
+  :user_name => $global_user_name,
+  :password => $global_password
   }
 
 

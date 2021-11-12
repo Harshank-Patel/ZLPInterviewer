@@ -7,6 +7,6 @@ class UserMailer < ApplicationMailer
   def admin_confirmation
     @user = params[:user]
 
-    mail(to: 'zlpinterviewer@gmail.com', subject: 'An Interview Has been succesfully scheduled')
+    mail(to: 'zlpinterview@gmail.com', subject: 'An Interview Has been succesfully scheduled')
   end
 end
