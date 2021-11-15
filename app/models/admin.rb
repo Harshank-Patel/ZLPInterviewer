@@ -84,7 +84,11 @@ class Admin < ApplicationRecord
           csv << ["Name", "Phone Number", "Email", "Interview Date", "Interview Time"]
           dt_array.each do |l|
             user = l[2]
-            csv << [user.name, user.phoneNumber, user.email, user.interviewDateTime.split(/,/)[0], user.interviewDateTime.split(/,/)[1]]
+            new_pn = user.phoneNumber
+            if !new_pn.include? "-"
+              new_pn = user.phoneNumber[0..2].to_s + "-" + user.phoneNumber[3..5].to_s + "-" + user.phoneNumber[6..9].to_s
+            end
+            csv << [user.name, new_pn, user.email, user.interviewDateTime.split(/,/)[0], user.interviewDateTime.split(/,/)[1]]
           end
         end
     end
