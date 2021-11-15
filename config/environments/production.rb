@@ -96,6 +96,21 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  $global_address = Rails.application.credentials.email[:address]
+  $global_domain = Rails.application.credentials.email[:domain]
+  $global_user_name = Rails.application.credentials.email[:user_name]
+  $global_password = Rails.application.credentials.email[:password]
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+  :authentication => :plain,
+  :address => $global_address,
+  :port => 587,
+  :domain => $global_domain,
+  :user_name => $global_user_name,
+  :password => $global_password
+  }
+
 
   # Inserts middleware to perform automatic connection switching.
   # The `database_selector` hash is used to pass options to the DatabaseSelector

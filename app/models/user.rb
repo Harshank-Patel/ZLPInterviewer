@@ -3,6 +3,28 @@ class User < ApplicationRecord
     validates :phoneNumber, presence: true
     validates :email, presence: true
     validates :interviewDateTime, presence: true
+    validates_format_of :email, :with => /\A(.+)@(tamu.edu)\z/, :message => "must end with @tamu.edu"
+    validate :phone_validator
+    validate :times_not_taken
+
+    def phone_validator
+        #phone_regex = /\A([0-9]{3})-([0-9]{3})-([0-9]{4})\z/
+        phone_regex = /\A([0-9]{10})\z/
+        phone_regex2 = /\A([0-9]{3})-([0-9]{3})-([0-9]{4})\z/
+        phone_number= "Phone Number"
+        if phoneNumber.blank? || (!phoneNumber.match(phone_regex) && !phoneNumber.match(phone_regex2))
+            self.errors.add(:phone_number, 'must be of format: xxx-xxx-xxxx')
+        end
+    end
+
+    def times_not_taken
+        new_dt_list = User.list_days_and_times
+        interview_date_and_time = "Interview date and time"
+        if !new_dt_list.include? interviewDateTime
+            self.errors.add(:interview_date_and_time, 'has been taken by someone else. Please try again')
+        end
+
+    end
 
     def self.get_dates
         #start_date = Admin.dateRange.split(/-/)[0]
@@ -169,10 +191,7 @@ class User < ApplicationRecord
 
 
         return final_date_time_list 
-
     end
-
-
 
 
 end

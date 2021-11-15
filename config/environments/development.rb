@@ -71,6 +71,22 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
+  config.active_record.dump_schema_after_migration = false
+  $global_address = Rails.application.credentials.email[:address]
+  $global_domain = Rails.application.credentials.email[:domain]
+  $global_user_name = Rails.application.credentials.email[:user_name]
+  $global_password = Rails.application.credentials.email[:password]
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+  :authentication => :plain,
+  :address => $global_address,
+  :port => 587,
+  :domain => $global_domain,
+  :user_name => $global_user_name,
+  :password => $global_password
+  }
+
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
 end
