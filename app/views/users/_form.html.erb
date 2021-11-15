@@ -20,20 +20,22 @@
   <% end %>
 
   <div class="field" style="padding-top: 5%">
-    <%= form.text_field :name, :required => true , placeholder:"Name", class: "form-control",:style=> 'max-width: 33%;min-width: 330px;' %>
+    <%= form.text_field :name, :required => true , placeholder:"Name", class: "form-control",:style=> 'max-width: 33%;min-width: 85%;' %>
     <br>
     <br>
-    <%= form.text_field :phoneNumber, :required => true, placeholder:"Phone Number", class: "form-control",:style=> 'max-width: 33%;min-width: 330px;'   %>
+    <%= form.text_field :phoneNumber, :required => true, placeholder:"Phone Number (format: xxx-xxx-xxxx)", class: "form-control",:style=> 'max-width: 33%;min-width: 85%;'   %>
     <br>
     <br>
-    <%= form.text_field :email, :size => "10", :required => true, placeholder:"Email", class: "form-control", :style=> 'max-width: 33%;min-width: 330px;'   %>
+    <%= form.text_field :email, :size => "10", :required => true, placeholder:"TAMU Email", class: "form-control", :style=> 'max-width: 33%;min-width: 85%;'   %>
     <br>
     <br>
     <%= cur_date = "" %>
     <% User.list_days_and_times.each do |date_time| %>
       <% new_date = date_time.split(/,/)[0] %>
       <% if new_date != cur_date %>
-        <%= form.label "Interview Date: " + new_date  %>
+        <% day_of_week = DateTime.parse(new_date).to_date.strftime("%A").to_str.capitalize() %>
+        <br>
+        <%= form.label "Interview Date: " + day_of_week + ", "+ new_date,:style=> 'font-weight: bold;' %>
         <br>
         <% cur_date = new_date %>
       <% end %>
@@ -44,7 +46,9 @@
   <center>
   <div class="actions">
     <%= form.submit "Submit", class: "btn btn-primary" %>
+    <%= link_to 'Back', root_path, class: "btn btn-dark"  %>
   </div>
+  
   </center>
 <% end %>
 

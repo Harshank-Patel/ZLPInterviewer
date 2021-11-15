@@ -1,0 +1,21 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>You have successfully scheduled an interview with the Zachary Leadership Program, <%= @user.name %> !</p>
+    <p>
+    Your Interview Details<br>
+    --------------------------
+    </p>
+    <p>Name: <%= @user.name %></p>
+    <p>Email: <%= @user.email %></p>
+    <p>interviewDateTime: <%= @user.interviewDateTime %></p>
+    <p>Phone: <%= @user.phoneNumber %></p>
+    <p>
+    ----------
+    </p>
+  </body>
+</html>

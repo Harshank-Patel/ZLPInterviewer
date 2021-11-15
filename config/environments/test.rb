@@ -52,6 +52,21 @@ Rails.application.configure do
   # Tell Active Support which deprecation messages to disallow.
   config.active_support.disallowed_deprecation_warnings = []
 
+
+  $global_address = Rails.application.credentials.email[:address]
+  $global_domain = Rails.application.credentials.email[:domain]
+  $global_user_name = Rails.application.credentials.email[:user_name]
+  $global_password = Rails.application.credentials.email[:password]
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+  :authentication => :plain,
+  :address => $global_address,
+  :port => 587,
+  :domain => $global_domain,
+  :user_name => $global_user_name,
+  :password => $global_password
+  }
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
 
