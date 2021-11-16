@@ -26,6 +26,7 @@ class User < ApplicationRecord
 
     end
 
+=begin
     def self.get_dates
         #start_date = Admin.dateRange.split(/-/)[0]
         #end_date = Admin.dateRange.split(/-/)[1]
@@ -69,7 +70,7 @@ class User < ApplicationRecord
         return [start_time, end_time]
     end
 
-
+=end
     def self.list_days_and_times
         @admins = Admin.all
 
@@ -85,7 +86,7 @@ class User < ApplicationRecord
             my_time = a.timeRange
             num_rooms = a.numRooms
         end
-
+        #2021-10-06:2021-10-07
         start_date = Date.parse(my_date.split(/:/)[0].to_s)
         end_date = Date.parse(my_date.split(/:/)[1].to_s)
         date_list = (start_date..end_date).map(&:to_s) #date list finished

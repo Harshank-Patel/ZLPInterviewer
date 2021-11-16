@@ -2,7 +2,7 @@ class AdminsController < ApplicationController
  
   $global_username = Rails.application.credentials.auth[:username]
   $global_password = Rails.application.credentials.auth[:password]
-  http_basic_authenticate_with name: $global_username, password: $global_password
+  #http_basic_authenticate_with name: $global_username, password: $global_password
 
   before_action :set_admin, only: %i[ show edit update destroy ]
 
