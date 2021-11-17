@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   root 'users#index'
+
+  get "help", to: "help#index"
+  
   resources :admins do
     member do 
       get :get_dates
